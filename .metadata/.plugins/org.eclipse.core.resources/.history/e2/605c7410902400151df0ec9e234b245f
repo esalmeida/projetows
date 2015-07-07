@@ -1,0 +1,5 @@
+package br.projetosws.dominio;
+
+public class Cotas {
+
+}

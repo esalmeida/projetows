@@ -1,0 +1,19 @@
+package br.projetows.servico;
+
+import javax.jws.WebMethod;
+import javax.jws.WebService;
+
+import br.projetows.dominio.Cotas;
+import br.projetows.dominio.CotasDAO;
+
+@WebService
+public class CotasRepositorioWS {
+	CotasDAO cotasDAO;
+	public CotasRepositorioWS(){
+		cotasDAO = new CotasDAO();
+	}
+	@WebMethod
+	public String[] cotas consultaCotas (String inscricao_nacional){
+		return cotasDAO.consulta(c);
+	}
+}

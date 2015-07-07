@@ -1,0 +1,47 @@
+package br.projetows.teste;
+
+
+import static org.junit.Assert.*;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import br.projetows.dominio.Cotas;
+import br.projetows.dominio.CotasDAO;
+
+public class UC02ConsultarCotas {
+
+	static CotasDAO cotasDAO;
+	static Cotas cotas = null;
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+
+		cotasDAO = new CotasDAO();
+
+		cotas = new Cotas();
+		cotas.setInscricao_nacional("1111111111");
+		cotas.setNm_pessoa("jose da silva");
+		cotas.setGrupo("codigo grupo");
+		cotas.setCota(1111);
+		cotas.setVersao(1111);
+		cotasDAO.cadastra(cotas);
+	}
+
+	@Test
+	public void CT01UC02ConsultaCotas_com_sucesso() {
+		assertNotNull(cotasDAO.consulta(cotas));
+	}
+	@Test
+	public void CT02UC02ConsultaCotas_com_sucesso() {
+		Cotas temp = null;
+		temp = cotasDAO.consulta(cotas);
+		assertEquals("jose da silva", temp.getNome());
+	}
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+		cotasDAO.exclui("1111111111");
+	}
+
+}

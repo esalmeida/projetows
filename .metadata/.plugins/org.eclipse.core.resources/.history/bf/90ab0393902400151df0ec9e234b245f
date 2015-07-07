@@ -1,0 +1,5 @@
+package br.projetows.dominio;
+
+public class CotasDAO {
+
+}
